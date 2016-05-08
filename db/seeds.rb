@@ -9,3 +9,5 @@ u1 = User.create(email: 'harshith.keni@gmail.com', password: 'abc123')
 u2 = User.create(email: 'harshith.keni@sdstate.edu', password: 'abc123')
 
 List.create(user:u1, title:'List 1', description: 'list 1')
+List.create(user:u1, title:'List 2', description: 'list 2')
+List.create(user:u1, title:'List 3', description: 'list 3')

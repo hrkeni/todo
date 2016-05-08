@@ -7,5 +7,16 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
+    %nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          %a{href: "/", class: 'navbar-brand'} Todo Lists!
+        %ul.nav.navbar-nav.navbar-right
+          - if user_signed_in?
+            %li
+              = link_to 'Sign Out', destroy_user_session_path, method: :delete
+          - else
+            %li
+              = link_to 'Sign In', new_user_session_path
     .container
       = yield
