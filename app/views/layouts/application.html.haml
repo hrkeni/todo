@@ -19,5 +19,5 @@
             %li
               = link_to 'Sign In', new_user_session_path
     .container
-      = render partial: "shared/flash_messages", flash: flash
+      - flash_messages
       = yield

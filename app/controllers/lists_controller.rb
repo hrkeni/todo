@@ -11,10 +11,12 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
+    @list.user = current_user
     if @list.save
       redirect_to '/', flash: {success: 'List created successfully'}
     else
-      redirect_to '/', flash: {error: @list.errors}
+      flash.now[:error] = @list.errors.full_messages.to_sentence
+      render 'new'
     end
   end
 

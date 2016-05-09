@@ -2,11 +2,11 @@
   .form-group
     = f.label 'Title', class: 'col-xs-3 control-label'
     .col-xs-9
-      = f.text_field :title, placeholder: 'Title', class: 'form-control'
+      = f.text_field :title, placeholder: 'Title', class: 'form-control', value: @list.title
   .form-group
     = f.label 'Description', class: 'col-xs-3 control-label'
     .col-xs-9
-      = f.text_field :description, placeholder: 'Description', class: 'form-control'
+      = f.text_field :description, placeholder: 'Description', class: 'form-control', value: @list.description
   .form-group
     .col-xs-9.col-xs-offset-3
       = f.submit 'Create', class:'btn btn-primary'
