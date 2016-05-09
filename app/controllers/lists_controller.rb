@@ -20,6 +20,16 @@ class ListsController < ApplicationController
     end
   end
 
+  def destroy
+    @list = List.find_by(id: params[:id], user_id: current_user.id)
+    if @list
+      @list.destroy
+      head :no_content
+    else
+      head :bad_request
+    end
+  end
+
   private
 
   def list_params
