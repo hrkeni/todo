@@ -8,7 +8,7 @@
       success: () =>
         @props.handleDeleteList @props.list
   handleAddItem: (item_id, item) ->
-    $.post '/list_items', {list_item: item}, (data) =>
+    $.post '/list_items', {list_item: item, list_id: @props.list.id}, (data) =>
       @props.handleAddItem @props.list.id, data
     , 'JSON'
   render: ->

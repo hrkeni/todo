@@ -13,9 +13,9 @@
     for list in lists
       if list.id is list_id
         index = lists.indexOf(list)
-    lists[index]
-    lists = React.addons.update(@state.lists[index], { $push: [item] })
-    @setState records: records
+    list_items = React.addons.update(@state.lists[index].list_items, { $push: [item] })
+    lists[index].list_items = list_items
+    @setState lists: lists
   render: ->
     React.DOM.div
       className: 'lists'

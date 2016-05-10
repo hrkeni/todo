@@ -14,17 +14,20 @@
           className: 'form-control input-sm'
           placeholder: 'Title'
           name: 'title'
+          value: @state.title
           onChange: @handleChange
         React.DOM.input
           type: 'text'
           className: 'form-control input-sm'
           placeholder: 'Description'
           name: 'description'
+          value: @state.description
           onChange: @handleChange
         React.DOM.select
           className: 'form-control input-sm'
           name: 'state'
           onChange: @handleChange
+          value: @state.state
           React.DOM.option
             value: 'not_started'
             'Not started'
@@ -32,7 +35,7 @@
             value: 'in_progress'
             'In progress'
           React.DOM.option
-            value: ':completed'
+            value: 'completed'
             'Completed'
         React.DOM.button
           type: 'submit'
