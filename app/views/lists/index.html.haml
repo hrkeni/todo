@@ -1,4 +1,4 @@
 %h3.title
   My ToDo Lists
   = link_to 'New List', new_list_path, class: 'btn btn-primary'
-= react_component 'Lists', { data: @lists }, { prerender: true }
+= react_component 'Lists', { data: @lists.as_json(include: :list_items) }, { prerender: true }
