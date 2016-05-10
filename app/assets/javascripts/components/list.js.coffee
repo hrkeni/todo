@@ -12,7 +12,12 @@
       className: 'panel panel-default'
       React.DOM.div
         className: 'panel-heading'
-        "#{@props.list.title} - #{@props.list.description}"
+        React.DOM.strong
+          className: 'title'
+          "#{@props.list.title}"
+        React.DOM.span
+          className: 'description'
+          " - #{@props.list.description}"
         React.DOM.div
           className: 'btn-group-xs'
           React.DOM.a
@@ -24,4 +29,5 @@
             'Delete'
       React.DOM.div
         className: 'panel-body'
-        "asdf"
+        for item in @props.list.list_items
+          React.createElement ListItem, key: item.id, item: item
