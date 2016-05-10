@@ -11,6 +11,8 @@
     $.post '/list_items', {list_item: item, list_id: @props.list.id}, (data) =>
       @props.handleAddItem @props.list.id, data
     , 'JSON'
+  onEdit: (item) ->
+    @props.handleEditItem @props.list.id, item
   render: ->
     React.DOM.div
       className: 'panel panel-default'
@@ -34,5 +36,5 @@
       React.DOM.div
         className: 'panel-body'
         for item in @props.list.list_items
-          React.createElement ListItem, key: item.id, item: item
-        React.createElement ListItemForm, onItemSubmit: @handleAddItem, state: 'not_started'
+          React.createElement ListItem, key: item.id, item: item, onEdit: @handleEditItem
+        React.createElement ListItemForm, onItemSubmit: @handleAddItem, item: {state: 'not_started'}, submitText: 'Add'

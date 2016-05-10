@@ -1,9 +1,9 @@
 @ListItemForm = React.createClass
   getInitialState: ->
-    title: ''
-    description: ''
-    state: @props.state
-    id: ''
+    title: @props.item.title
+    description: @props.item.description
+    state: @props.item.state
+    id: @props.item.id
   render: ->
     React.DOM.form
       className: 'form-inline'
@@ -42,7 +42,7 @@
           disabled: !@valid()
           onClick: @handleSubmit
           className: 'btn btn-primary btn-sm'
-          "Add"
+          "#{@props.submitText}"
   valid: ->
     @state.title
   handleChange: (e) ->
