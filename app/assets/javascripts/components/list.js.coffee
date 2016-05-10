@@ -13,6 +13,8 @@
     , 'JSON'
   handleEditItem: (item) ->
     @props.onEdit @props.list.id, item
+  handleDeleteItem: (item) ->
+    @props.onDeleteItem @props.list.id, item
   render: ->
     React.DOM.div
       className: 'panel panel-default'
@@ -36,5 +38,5 @@
       React.DOM.div
         className: 'panel-body'
         for item in @props.list.list_items
-          React.createElement ListItem, key: item.id, item: item, onEdit: @handleEditItem
+          React.createElement ListItem, key: item.id, item: item, onEdit: @handleEditItem, onDeleteItem: @handleDeleteItem
         React.createElement ListItemForm, onItemSubmit: @handleAddItem, item: {state: 'not_started'}, submitText: 'Add'

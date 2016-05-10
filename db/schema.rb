@@ -18,21 +18,21 @@ ActiveRecord::Schema.define(version: 20160509042742) do
 
   create_table "list_items", force: :cascade do |t|
     t.string   "title"
-    t.string   "description"
+    t.string   "description", default: ""
     t.integer  "list_id"
     t.integer  "state",       default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "list_items", ["list_id"], name: "index_list_items_on_list_id", using: :btree
 
   create_table "lists", force: :cascade do |t|
     t.string   "title"
-    t.string   "description"
+    t.string   "description", default: ""
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "lists", ["user_id"], name: "index_lists_on_user_id", using: :btree
@@ -52,6 +52,4 @@ ActiveRecord::Schema.define(version: 20160509042742) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
-  add_foreign_key "list_items", "lists"
-  add_foreign_key "lists", "users"
 end

@@ -1,4 +1,6 @@
 class ListItemsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @list = List.find(params[:list_id])
     if !@list
@@ -19,6 +21,16 @@ class ListItemsController < ApplicationController
       render json: @list_item
     else
       render json: @list_item, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @list_item = ListItem.find_by(id: params[:id])
+    if @list_item
+      @list_item.destroy
+      head :no_content
+    else
+      head :bad_request
     end
   end
 

@@ -16,6 +16,14 @@
       success: (data) =>
         @setState edit: false
         @props.onEdit data
+  handleDelete: (e) ->
+    e.preventDefault()
+    $.ajax
+      method: 'DELETE'
+      url: "/list_items/#{@props.item.id}"
+      dataType: 'JSON'
+      success: (data) =>
+        @props.onDeleteItem(@props.item)
   listItemRow: ->
     React.DOM.div
       className: 'list-item'
