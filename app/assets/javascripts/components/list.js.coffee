@@ -11,8 +11,8 @@
     $.post '/list_items', {list_item: item, list_id: @props.list.id}, (data) =>
       @props.handleAddItem @props.list.id, data
     , 'JSON'
-  onEdit: (item) ->
-    @props.handleEditItem @props.list.id, item
+  handleEditItem: (item) ->
+    @props.onEdit @props.list.id, item
   render: ->
     React.DOM.div
       className: 'panel panel-default'

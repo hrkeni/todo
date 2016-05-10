@@ -1,8 +1,17 @@
 @ListItemForm = React.createClass
   getInitialState: ->
+    itemState = @props.item.state
+    if itemState is 'Not started'
+      itemState = 'not_started'
+    else if itemState is 'In progress'
+      itemState = 'in_progress'
+    else if itemState is 'Completed'
+      itemState = 'completed'
+    else
+      itemState = 'not_started'
     title: @props.item.title
     description: @props.item.description
-    state: @props.item.state
+    state: itemState
     id: @props.item.id
   render: ->
     React.DOM.form

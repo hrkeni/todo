@@ -16,16 +16,18 @@
     list_items = React.addons.update(@state.lists[index].list_items, { $push: [item] })
     lists[index].list_items = list_items
     @setState lists: lists
-  editItem: (list_id, item) ->
+  handleEditItem: (list_id, item) ->
     lists = @state.lists
     for list in lists
       if list.id is list_id
         listIndex = lists.indexOf(list)
-    itemIndex = @state.lists[listIndex].indexOf(item)
-    lists[itemIndex].list_items = list_items
+    for i in lists[listIndex].list_items
+      if i.id is item.id
+        itemIndex = lists[listIndex].list_items.indexOf(i)
+    lists = React.addons.update(lists, {"#{listIndex}": { list_items: { "#{itemIndex}": {$set: item } } } })
     @setState lists: lists
   render: ->
     React.DOM.div
       className: 'lists'
       for list in @state.lists
-        React.createElement List, key: list.id, list: list, handleDeleteList: @deleteList, handleAddItem: @addItem, handleEditItem: @editItem
+        React.createElement List, key: list.id, list: list, handleDeleteList: @deleteList, handleAddItem: @addItem, onEdit: @handleEditItem
